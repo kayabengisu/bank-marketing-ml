@@ -41,12 +41,17 @@ the CSV interactively.
 
 ## Data
 
-`bank_marketing.csv` — UCI Machine Learning Repository, Moro et al. (2014),
-course-specific subset. `cleaned_bank_data.csv` is produced by `00_EDA.ipynb`
-and committed so `03_Classification.ipynb` runs standalone.
+`bank_marketing.csv` — a course-specific variant of the UCI *Bank Marketing* dataset
+([Moro, Laureano & Cortez, 2011](http://hdl.handle.net/1822/14838)). The full dataset
+has 17 possible variables; each student group was assigned a different random subset
+of both variables and observations, so this file has only 10 of the 17: `age`,
+`marital`, `education`, `housing`, `loan`, `contact`, `month`, `duration`, `pdays`,
+`TermDeposit` (target). Variables that are often prominent in other public analyses of
+this dataset — `job`, `balance`, `campaign`, `previous`, `poutcome` — were never part
+of this group's data, not dropped by choice.
 
-Columns: `age`, `marital`, `education`, `housing`, `loan`, `contact`, `month`,
-`duration`, `pdays`, `TermDeposit` (target).
+`cleaned_bank_data.csv` is produced by `00_EDA.ipynb` and committed so
+`03_Classification.ipynb` runs standalone.
 
 ---
 
