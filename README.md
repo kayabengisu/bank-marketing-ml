@@ -25,17 +25,11 @@ with only 12.2% of customers subscribing, accuracy is not the metric to optimize
 
 ## How to run
 
-These notebooks were written in **Google Colab** and use `files.upload()` to load
-the CSV interactively.
-
-- **In Colab:** open the notebook, run the first cell, and upload
-  `bank_marketing.csv` (or `cleaned_bank_data.csv` for `03_Classification.ipynb`)
-  when prompted.
-- **Locally (Jupyter):** replace the `files.upload()` cell with
-  ```python
-  df = pd.read_csv("bank_marketing.csv")
-  ```
-  Both CSVs are committed in this repo, so no download is needed.
+Both notebooks load data with a plain `pd.read_csv()` — no upload step, no
+API key, nothing to configure. `00_EDA.ipynb` reads `bank_marketing.csv` and
+writes `cleaned_bank_data.csv`; `03_Classification.ipynb` reads that output
+directly. Open either in Jupyter or Colab and run top to bottom; both CSVs
+are already committed in this repo.
 
 ---
 
