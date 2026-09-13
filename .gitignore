@@ -1,8 +1,8 @@
-# === Bu dosyayı repo kökene ".gitignore" adıyla kopyala ===
-# (Başındaki nokta önemli. Finder nokta ile başlayan dosyaları gizler:
-#  Cmd+Shift+. ile görünür yaparsın.)
+# === Copy this file to the repo root as ".gitignore" ===
+# (The leading dot matters. Finder hides dotfiles by default:
+#  toggle visibility with Cmd+Shift+.)
 
-# --- Sırlar / kimlik bilgileri (EN ÖNEMLİ KISIM) ---
+# --- Secrets / credentials (MOST IMPORTANT SECTION) ---
 .Renviron
 .Rprofile
 *.env
@@ -10,10 +10,10 @@
 secrets.*
 credentials.*
 config_local.*
-setConfigUser*.R          # kişisel yol + anahtar içeren dosyalar
-!setConfigUser.example.R  # ama örnek şablon repo'da kalsın
+setConfigUser*.R          # files with personal paths and/or keys
+!setConfigUser.example.R  # but keep the example template in the repo
 
-# --- R oturum artıkları ---
+# --- R session artifacts ---
 .Rhistory
 .Rapp.history
 .RData
@@ -22,7 +22,7 @@ setConfigUser*.R          # kişisel yol + anahtar içeren dosyalar
 *.Rproj.user
 .quarto/
 
-# --- macOS / editör çöpü ---
+# --- macOS / editor clutter ---
 .DS_Store
 Icon?
 ._*
@@ -40,14 +40,14 @@ __pycache__/
 venv/
 env/
 
-# --- Yedek dosyalar ---
+# --- Backup files ---
 *.bak
 *.R.bak
 *~
 
-# --- Büyük veri & model çıktıları ---
-# (GitHub'da dosya başına 100 MB sert limit, 50 MB'da uyarı verir.
-#  Repo toplamını 1 GB'ın altında tutmak iyi pratiktir.)
+# --- Large data & model outputs ---
+# (GitHub hard-blocks files over 100 MB and warns above 50 MB.
+#  Keeping total repo size under 1 GB is good practice.)
 *.parquet
 *.zip
 *.bin
@@ -55,14 +55,13 @@ env/
 *.pkl
 *.sav
 
-# --- Render edilmiş büyük HTML çıktıları ---
-# dashboard.html gibi 5 MB+ dosyalar; bunları GitHub Pages'te yayınla
+# --- Large rendered HTML output ---
+# files like dashboard.html can be 5 MB+; publish those via GitHub Pages instead
 *_cache/
 *_files/
 dashboard.html
 
-# --- İstisnalar: bunlar repo'da KALSIN ---
+# --- Exceptions: keep these in the repo ---
 !.gitignore
-!.Renviron.example
 !README.md
 !data/*_sample.csv
