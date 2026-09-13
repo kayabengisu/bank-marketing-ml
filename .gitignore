@@ -1,0 +1,68 @@
+# === Bu dosyayı repo kökene ".gitignore" adıyla kopyala ===
+# (Başındaki nokta önemli. Finder nokta ile başlayan dosyaları gizler:
+#  Cmd+Shift+. ile görünür yaparsın.)
+
+# --- Sırlar / kimlik bilgileri (EN ÖNEMLİ KISIM) ---
+.Renviron
+.Rprofile
+*.env
+.env
+secrets.*
+credentials.*
+config_local.*
+setConfigUser*.R          # kişisel yol + anahtar içeren dosyalar
+!setConfigUser.example.R  # ama örnek şablon repo'da kalsın
+
+# --- R oturum artıkları ---
+.Rhistory
+.Rapp.history
+.RData
+.Ruserdata
+.Rproj.user/
+*.Rproj.user
+.quarto/
+
+# --- macOS / editör çöpü ---
+.DS_Store
+Icon?
+._*
+.Spotlight-V100
+.Trashes
+*.swp
+.vscode/
+.idea/
+
+# --- Python / Jupyter ---
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+venv/
+env/
+
+# --- Yedek dosyalar ---
+*.bak
+*.R.bak
+*~
+
+# --- Büyük veri & model çıktıları ---
+# (GitHub'da dosya başına 100 MB sert limit, 50 MB'da uyarı verir.
+#  Repo toplamını 1 GB'ın altında tutmak iyi pratiktir.)
+*.parquet
+*.zip
+*.bin
+*.h5
+*.pkl
+*.sav
+
+# --- Render edilmiş büyük HTML çıktıları ---
+# dashboard.html gibi 5 MB+ dosyalar; bunları GitHub Pages'te yayınla
+*_cache/
+*_files/
+dashboard.html
+
+# --- İstisnalar: bunlar repo'da KALSIN ---
+!.gitignore
+!.Renviron.example
+!README.md
+!data/*_sample.csv
