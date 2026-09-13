@@ -81,7 +81,7 @@ Columns: `age`, `marital`, `education`, `housing`, `loan`, `contact`, `month`,
 
 ## Team & contribution
 
-Course team project (Group 7).
+Course team project.
 **My contribution:** all of the exploratory data analysis (`00_EDA.ipynb`) and the
 classification work (`03_Classification.ipynb`) — the only two notebooks included in
 this repo.
