@@ -80,7 +80,9 @@ of this group's data, not dropped by choice.
 
 ## Team & contribution
 
-Course team project.
+3-person course team project. Data preparation and EDA (`00_EDA.ipynb`) were a
+joint effort; each teammate then worked independently on one modeling task
+(clustering, regression, or classification).
 **My contribution:** all of the exploratory data analysis (`00_EDA.ipynb`) and the
 classification work (`03_Classification.ipynb`) — the only two notebooks included in
 this repo.
