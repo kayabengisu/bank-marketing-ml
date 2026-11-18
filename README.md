@@ -4,11 +4,22 @@ Exploratory analysis and classification model for a Portuguese bank's direct-mar
 campaign (UCI *Bank Marketing* dataset, course version: 11,302 contacts, 10 feature
 columns): who subscribes to a term deposit, and how well the outcome can be predicted.
 
-**Headline finding:** Logistic Regression predicts term-deposit subscription with
-AUC = 0.90 and catches about 80% of actual subscribers (Recall = 0.80). A model
-selected on raw accuracy alone would have picked the wrong one: Random Forest scores
-higher on accuracy (0.89) but misses two-thirds of actual subscribers (Recall = 0.34) —
-with only 12.2% of customers subscribing, accuracy is not the metric to optimize for.
+**Headline finding:** Ranking customers on pre-call data only, Logistic Regression
+reaches **AUC = 0.71**. Calling the top 20% of the ranked list would reach about
+**45% of subscribers**, about **2.2× better than calling at random** (lift 2.2).
+
+- **Why 0.90 is only an upper bound:** with call duration (`duration`) included, AUC
+  rises to 0.90. Duration is known only after the call has ended, so it cannot be used
+  to decide whom to call. The 0.90 result is reported separately as an upper bound,
+  not as the model's real performance.
+- **Why accuracy is misleading:** only 12.2% of customers subscribed, so a model that
+  always predicts "no" already scores about 88% accuracy. Random Forest has the highest
+  accuracy (0.89) but misses two-thirds of subscribers (recall 0.34).
+
+The pre-call figures come from the follow-up analysis in
+[`bank-marketing-ml-v2`](https://github.com/kayabengisu/bank-marketing-ml-v2)
+(notebooks `05_duration_olmadan_model` and `06_esik_ayari_kazanc`, test set).
+The notebooks in this repo contain the model with `duration`, i.e. the upper bound.
 
 ---
 
@@ -17,7 +28,7 @@ with only 12.2% of customers subscribing, accuracy is not the metric to optimize
 | # | Notebook | What it does | Key output |
 |---|---|---|---|
 | 00 | `00_EDA.ipynb` | Distributions, dtypes, missing values, class balance | `cleaned_bank_data.csv` (11,260 rows after de-duplication) |
-| 03 | `03_Classification.ipynb` | Term-deposit subscription prediction | Logistic Regression best: AUC = 0.90, F1 = 0.53, Recall = 0.80 |
+| 03 | `03_Classification.ipynb` | Term-deposit subscription prediction | Logistic Regression with `duration` (upper bound): AUC = 0.90, F1 = 0.53, Recall = 0.80 |
 
 **Stack:** Python · pandas · scikit-learn · matplotlib/seaborn · Google Colab
 
@@ -73,16 +84,20 @@ of this group's data, not dropped by choice.
   customers actually worth calling.
 - **The model is a retrospective scoring tool, not a pre-call targeting tool.** Its
   strongest signal (`duration`) only exists after the call has already happened, so
-  it's useful for analyzing calls that were made, not for deciding who to call next
-  without a substitute for that signal.
+  it's useful for analyzing calls that were made, not for deciding who to call next.
+  Rebuilt without `duration` (see headline), the pre-call model reaches AUC 0.71 and
+  lift 2.2 in the top 20%.
 
 ---
 
-## Team & contribution
+## Team and my contribution
 
-3-person course team project. Data preparation and EDA (`00_EDA.ipynb`) were a
-joint effort; each teammate then worked independently on one modeling task
-(clustering, regression, or classification).
-**My contribution:** all of the exploratory data analysis (`00_EDA.ipynb`) and the
-classification work (`03_Classification.ipynb`) — the only two notebooks included in
-this repo.
+Group project (3 students) for the DMA course at WU Vienna.
+
+- The exploratory data analysis (EDA) was done jointly.
+- One teammate did the regression, another teammate did the segmentation (clustering),
+  and I built the classification model.
+- I checked `duration` for data leakage in the data and reported the 0.90 result
+  separately as an upper bound.
+
+This repo contains only the EDA notebook and my classification notebook.
