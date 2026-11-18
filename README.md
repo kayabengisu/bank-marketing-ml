@@ -16,9 +16,7 @@ reaches **AUC = 0.71**. Calling the top 20% of the ranked list would reach about
   always predicts "no" already scores about 88% accuracy. Random Forest has the highest
   accuracy (0.89) but misses two-thirds of subscribers (recall 0.34).
 
-The pre-call figures come from the follow-up analysis in
-[`bank-marketing-ml-v2`](https://github.com/kayabengisu/bank-marketing-ml-v2)
-(notebooks `05_duration_olmadan_model` and `06_esik_ayari_kazanc`, test set).
+The pre-call figures (test set) come from a follow-up analysis that is not yet public.
 The notebooks in this repo contain the model with `duration`, i.e. the upper bound.
 
 ---
